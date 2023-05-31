@@ -1,0 +1,26 @@
+{% extends 'magasin/base.html' %}
+
+{% block content %}
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Adress</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">telephon</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for four in Fourniseur %}
+        <tr>
+            <td>{{four.nom}}</td>
+            <td>{{four.adresse}}</td>
+            <td>{{four.email}}</td>
+            <td>{{four.telephone}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a type="button" class="btn btn-danger" href="/addFournisseur">Add</a>
+
+{% endblock %}

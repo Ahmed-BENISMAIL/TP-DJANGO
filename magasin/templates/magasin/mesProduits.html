@@ -1,0 +1,53 @@
+{% extends 'magasin/base.html' %}
+
+{% block content %}
+<!-- body -->
+<form method='POST' class="post-form" >
+    {% csrf_token %}
+    <div class="container">
+        <div style="overflow:scroll; border:#000000 1px solid;">
+            <table>
+                <tr>
+                    {% for article in products %}
+                    <td>
+                        <img src='/media/{{ article.img }}' class="rounded float-start" height="200px" width="200px"
+                            alt="">
+                        <figcaption class="figure-caption">
+                            {{article.libelle}}
+                        </figcaption>
+                        <p> {{article.prix}} DT. </p>
+                    </td>
+                    {% endfor %}
+                </tr>
+            </table>
+        </div>
+</form>
+</div>
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <a type="button" class="btn btn-danger" href="/addProduit">Add</a>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for product in products %}
+            <div class="col mb-5">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img class="card-img-top" src='/media/{{ product.img }}' />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{product.libelle}}</h5>
+                            <!-- Product price-->
+                            {{product.prix}}
+                            <p> {{product.Fournisseur_id}}. </p>
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                   
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
